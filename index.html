@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kirthiv Portfolio</title>
+  <style>
+    :root {
+      --primary-color: #dd0937;
+      --accent-color: #3b82f6;
+      --text-color: #f3f4f6;
+      --bg-color: #111827;
+    }
+
+    body.light {
+      --primary-color: #f3f4f6;
+      --accent-color: #3b82f6;
+      --text-color: #f20808;
+      --bg-color: #ffffff;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    header {
+      background: var(--primary-color);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--text-color);
+      margin-left: 1rem;
+      text-decoration: none;
+    }
+
+    .theme-toggle {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--text-color);
+      cursor: pointer;
+      margin-left: 1rem;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 4.25cm;
+      background-color: #1f2937;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #9ca3af;
+    }
+
+    #typewriter {
+      font-size: 3rem;
+      white-space: nowrap;
+      overflow: hidden;
+      display: center;
+      border-right: 3px solid var(--accent-color);
+      animation: typing 2s steps(50, end) forwards;
+      position: relative;
+      transform: translateX(-50%);
+      left: 50%;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 27ch; } 
+    }
+
+    @keyframes blink {
+      0%, 100% { border-color: transparent; }
+      50% { border-color: var(--accent-color); }
+    }
+
+    .hide-cursor {
+      border-right: none !important;
+      animation: none !important;
+    }
+    section {
+      padding: 4rem 2rem;
+      max-width: 900px;
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .fade-up.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--accent-color);
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .skill-button {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background-color: #dcc3c3c7;
+      border: none;
+      border-radius: 8px;
+      color: #4a0000;
+      font-size: 0.9rem;
+      cursor: default;
+    }
+
+    .skill-button img {
+      height: 20px;
+      width: 20px;
+    }
+
+    .resume-button {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.75rem 1.5rem;
+      background-color: var(--accent-color);
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .resume-button:hover {
+      background-color: #2563eb;
+    }
+
+    .project-card {
+      background-color: #1f2937;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      color: #fff;
+      transition: transform 0.2s;
+    }
+
+    .project-card img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .project-card:hover {
+      transform: scale(1.02);
+      box-shadow: var(--bg-color);
+    }
+
+    .project-card a {
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+
+    .theme-icon {
+      display: none;
+    }
+
+    body.light .light-icon {
+      display: inline;
+    }
+
+    body.light .dark-icon {
+      display: none;
+    }
+
+    body:not(.light) .light-icon {
+      display: none;
+    }
+
+    body:not(.light) .dark-icon {
+      display: inline;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    form input, form textarea {
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: none;
+      border-radius: 6px;
+    }
+
+    form button {
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      padding: 0.75rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .social-icons a img {
+      width: 30px;
+      height: 30px;
+    }
+
+    footer {
+      background-color: var(--primary-color);
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div style="text-align: center; ; padding: 1px; background-color: #facc15; color: #000; font-weight: bold;">
+      🚧⚠️ This profile is currently under progress. Stay tuned for updates!🤗
+    </div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#Resume">Resume</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <button class="theme-toggle" onclick="toggleTheme()">&#9788;</button>
+    </nav>
+  </header>
+
+  <div class="hero">
+  <h1 id="typewriter"></h1>
+  <p>AI & Data Science Student | Full Stack Developer</p>
+</div>
+
+<center>
+  <section id="about">
+    <div class="about">
+      <h2>About Me</h2>
+      <p style="text-align: center;">
+        I am an enthusiastic and dedicated Artificial Intelligence and Data Science student with a strong passion for solving real-world problems through technology. With hands-on experience in full-stack development, I have built projects using React, Django, and Node.js. I enjoy exploring emerging technologies such as cloud computing, data analytics, and machine learning. My academic journey has been complemented by internships, certifications, and competitive coding on platforms like LeetCode and HackerRank. I thrive in collaborative environments, constantly seek to improve my skills, and am driven by a desire to build impactful, scalable, and user-friendly digital solutions. I am eager to contribute to innovative teams where I can leverage my technical skills and creativity to develop cutting-edge applications. My strong problem-solving mindset and attention to detail enable me to tackle complex challenges effectively. I am also passionate about continuous learning and staying updated with the latest industry trends and best practices. In addition, I value effective communication and teamwork, believing they are essential for the success of any project. Ultimately, I aspire to make meaningful contributions that positively impact society through technology.
+      </p>
+    </div>
+  </section>
+
+  <section id="skills">
+  <h2>Skills</h2>
+  <div class="skills">
+    <div class="skill-button"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML" />HTML</div>
+    <div class="skill-button"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS" />CSS</div>
+    <div class="skill-button"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" />JavaScript</div>
+    <div class="skill-button"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" />React</div>
+    <div class="skill-button"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" />Python</div>
+    <div class="skill-button"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" />Java</div>
+    <div class="skill-button"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C" />C</div>
+    <div class="skill-button"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++" />C++</div>
+    <div class="skill-button"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg" alt="Go" />Go</div>
+    <div class="skill-button"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" />MySQL</div>
+    <div class="skill-button"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" />Git</div>
+    <div class="skill-button"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" />Docker</div>
+    <div class="skill-button"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP" />PHP</div>
+  </div>
+</section>
+
+<section id="Resume">
+  <h2>Resume</h2>
+  <a href="kirthivarshan s resume.pdf" download class="resume-button">Download Resume</a>
+</section>
+
+
+  <section id="projects">
+  <h2>Projects</h2>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+    <div class="project-card">
+      <!-- <img src="ecmmerce.png" alt="E-Commerce Website"> -->
+      <h3>E-Commerce Website</h3>
+      <p>A complete online shopping platform built html/css/js. It includes product listings, cart and payment integration. Designed for a smooth user experience.</p>
+      <div class="skills">
+        <span class="skill-button">HTML</span>
+        <span class="skill-button">CSS</span>
+        <span class="skill-button">JavaScript</span>
+      </div>
+      <div style="margin-top: 1rem; background: #1f2937; padding: 0.5rem; border-radius: 8px;">
+        <a href="https://kirthiv-2900.github.io/fsd-ecommerce/#" style="color: var(--accent-color); margin-right: 1rem;">Live Demo</a>
+        <a href="https://github.com/kirthiv-2900/fsd-ecommerce.git" style="color: var(--accent-color);">Code</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <!-- <img src="https://via.placeholder.com/400x200" alt="Travel Ticket Booking"> -->
+      <h3>Travel Ticket Booking</h3>
+      <p>A Golang-powered travel booking system where users can search, book, and manage travel tickets. The web interface is built with HTML5, providing a responsive and fast experience.</p>
+      <div class="skills">
+        <span class="skill-button">Golang</span>
+        <span class="skill-button">HTML5</span>
+      </div>
+      <div style="margin-top: 1rem; background: #1f2937; padding: 0.5rem; border-radius: 8px;">
+        <!-- <a href="#" style="color: var(--accent-color); margin-right: 1rem;">Live Demo</a> -->
+        <a href="https://github.com/kirthiv29an/ticket-golang.git" style="color: var(--accent-color);">Code</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <!-- <img src="https://via.placeholder.com/400x200" alt="AI Smart Learning App"> -->
+      <h3>AI Smart Learning App</h3>
+      <p>An AI-enhanced learning tracker developed with React and TypeScript. Users can monitor their study patterns, receive AI-based suggestions, and visualize productivity data interactively.</p>
+      <div class="skills">
+        <span class="skill-button">React</span>
+        <span class="skill-button">TypeScript</span>
+      </div>
+      <div style="margin-top: 1rem; background: #1f2937; padding: 0.5rem; border-radius: 8px;">
+        <!--<a href="#" style="color: var(--accent-color); margin-right: 1rem;">Live Demo</a>-->
+        <!-- <a href="#" style="color: var(--accent-color);">Code</a> -->
+      </div>
+    </div>
+
+    <div class="project-card">
+      <!-- <img src="https://via.placeholder.com/400x200" alt="Customer Analysis Dashboard"> -->
+      <h3>Customer Analysis Dashboard</h3>
+      <p>This interactive Customer Analysis Dashboard allows users to upload any dataset, select relevant columns for customized clustering and visualization, and explore insightful summary statistics.</p>
+      <div class="skills">
+        <span class="skill-button">Python</span>
+        <span class="skill-button">Tkinter</span>
+        <span class="skill-button">Data Analysis</span>
+      </div>
+      <div style="margin-top: 1rem; background: #1f2937; padding: 0.5rem; border-radius: 8px;">
+        <a href="https://cusstomer-analysis-dashboard.streamlit.app/" style="color: var(--accent-color); margin-right: 1rem;">Live Demo</a>
+        <a href="https://github.com/kirthiv-2900/cusstomer-analysis-dashboard.git" style="color: var(--accent-color);">Code</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <!-- <img src="https://via.placeholder.com/400x200" alt="Task Management App"> -->
+      <h3>Task Management App</h3>
+      <p>A Java-based web application for team task tracking. Supports task assignment, status updates, and progress visualization in a clean interface.</p>
+      <div class="skills">
+        <span class="skill-button">Java</span>
+      </div>
+      <div style="margin-top: 1rem; background: #1f2937; padding: 0.5rem; border-radius: 8px;">
+        <!-- <a href="#" style="color: var(--accent-color); margin-right: 1rem;">Live Demo</a> -->
+        <a href="https://github.com/kirthiv-2900/java-projects.git" style="color: var(--accent-color);">Sample Code (under development)</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <!-- <img src="https://via.placeholder.com/400x200" alt="Block Basket"> -->
+      <h3>Security System for E-Commerce</h3>
+      <p>This anti-counterfeiting system for e-commerce was designed to achieve product authenticity verification. The project implemented unique identifiers for products and dynamically updated ownership records, ensuring transparency and security, effectively combating counterfeiting.</p>
+      <div class="skills">
+        <span class="skill-button"></span>
+      </div>
+      <div style="margin-top: 1rem; background: #1f2937; padding: 0.5rem; border-radius: 8px;">
+        <!-- <a href="#" style="color: var(--accent-color); margin-right: 1rem;">Live Demo</a> -->
+        <!-- <a href="#" style="color: var(--accent-color);">Code</a> -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Connect Me</h2>
+  <div class="social-icons">
+    <a href="https://github.com/kirthiv-2900" target="_blank">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" style="filter: invert(1); width: 30px; height: 30px;">
+    </a>
+    <a href="https://www.linkedin.com/in/kirthivarshan-s-b2aa49256/" target="_blank">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" style="width: 30px; height: 30px;">
+    </a>
+    <a href="https://leetcode.com/u/kirthivarshan/" target="_blank">
+      <img src="https://img.icons8.com/external-tal-revivo-filled-tal-revivo/32/000000/external-level-up-your-coding-skills-and-quickly-land-a-job-logo-filled-tal-revivo.png" alt="LeetCode" style="width: 30px; height: 30px;">
+    </a>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <form action="https://smtpjs.com/v3/smtpjs.aspx?" method="POST" onsubmit="return sendEmail(event)">
+    <input type="text" name="name" placeholder="Your Name" required />
+    <input type="email" name="email" placeholder="Your Email" required />
+    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+</center>
+
+  <footer>
+    &copy; 2025/Kirthivarshan
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const el = document.getElementById("typewriter");
+      const text = "Hello, I'm Kirthivarshan";
+      el.textContent = text;
+
+      setTimeout(() => {
+        el.classList.add("hide-cursor");
+      }, 3000); 
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const sections = document.querySelectorAll("section");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("show");
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      sections.forEach((section) => {
+        section.classList.add("fade-up");
+        observer.observe(section);
+      });
+    });
+
+    function toggleTheme() {
+      document.body.classList.toggle("light");
+      localStorage.setItem("theme", document.body.classList.contains("light") ? "light" : "dark");
+    }
+
+    window.onload = function () {
+      if (localStorage.getItem("theme") === "light") {
+        document.body.classList.add("light");
+      }
+    };
+
+    function sendEmail(e) {
+      e.preventDefault();
+      const form = e.target;
+      Email.send({
+        SecureToken: "8189006c-ee65-49e3-915a-dad2b5e16bcd",
+        To: 'kirthi2970@gmail.com',
+        From: form.email.value,
+        Subject: `Portfolio Contact from ${form.name.value}`,
+        Body: form.message.value
+      }).then(
+        message => alert("Message sent successfully")
+      );
+      form.reset();
+      return false;
+    }
+  </script>
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+</body>
+</html>
